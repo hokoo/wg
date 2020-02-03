@@ -4,3 +4,4 @@ wg_network="NN.NN.NN"
 
 server_ip=$(curl -4 -s https://ifconfig.co)
 internal_interface=$(ip r s|grep $server_ip|awk '{print $3}')
+server_port=NNNN #Change here!!!
