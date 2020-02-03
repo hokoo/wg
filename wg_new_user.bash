@@ -76,6 +76,6 @@ printf "last_octet=$last_octet" >last_octet_file
 $QR -t ansiutf8 <$client_name/wg.conf
 $QR -o $client_name/$client_name-qr.png <$client_name/wg.conf
 
-printf "$client_name client config" | $TG_SEND --stdin
+printf "$client_name client config for $(hostname) server" | $TG_SEND --stdin
 $TG_SEND --image $client_name/$client_name-qr.png --caption "Client config"
 $TG_SEND --file $client_name/wg.conf
