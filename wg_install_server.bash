@@ -40,8 +40,8 @@ printf $privatekey >$client_name/privatekey
 publickey=$(wg pubkey <./$client_name/privatekey)
 printf $publickey >$client_name/publickey
 
-printf "[Interface]\nPrivateKey = $privatekey\nAddress = $wg_network.$last_octet/24\nListen Port=$server_port\nPostUp = iptables -A FORWARD -i $wg_interface -j ACCEPT; iptables -t nat -A POSTROUTING -o $internal_interface -j MASQUERADE; ip6tables -A FORWARD -i $wg_interface -j ACCEPT; ip6tables -t nat -A POSTROUTING -o $internal_interface -j MASQUERADE\nPostDown = iptables -D FORWARD -i $wg_interface -j ACCEPT; iptables -t nat -D POSTROUTING -o $internal_interface -j MASQUERADE; ip6tables -D FORWARD -i $wg_interface -j ACCEPT; ip6tables -t nat -D POSTROUTING -o $internal_interface -j MASQUERADE" >$client_name/wg.conf
-printf "###$client_name config###\n[Peer]\nPublicKey = $publickey\nPresharedKey = $preshared\nAllowedIPs = $wg_network.$last_octet/32\n###End $client_name config###\n" >$client_name/for_server_config.conf
+printf "[Interface]\nPrivateKey = $privatekey\nAddress = $wg_network.$last_octet/24\nListen Port=$server_port\nPostUp = iptables -A FORWARD -i $wg_interface -j ACCEPT; iptables -t nat -A POSTROUTING -o $internal_interface -j MASQUERADE; ip6tables -A FORWARD -i $wg_interface -j ACCEPT; ip6tables -t nat -A POSTROUTING -o $internal_interface -j MASQUERADE\nPostDown = iptables -D FORWARD -i $wg_interface -j ACCEPT; iptables -t nat -D POSTROUTING -o $internal_interface -j MASQUERADE; ip6tables -D FORWARD -i $wg_interface -j ACCEPT; ip6tables -t nat -D POSTROUTING -o $internal_interface -j MASQUERADE" >$client_name/for_server_config.conf
+#printf "###$client_name config###\n[Peer]\nPublicKey = $publickey\nPresharedKey = $preshared\nAllowedIPs = $wg_network.$last_octet/32\n###End $client_name config###\n" >$client_name/for_server_config.conf
 cat $client_name/for_server_config.conf >>/etc/wireguard/$wg_interface.conf
 
 systemctl enable wg-quick@$wg_interface
