@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+add-apt-repository -y ppa:wireguard/wireguard
+apt-get update
+apt-get -y install wireguard
+
 if [ -z "$1" ]; then
 	echo "No user name"
 	exit 1
@@ -24,15 +28,6 @@ fi
 
 source server_variables
 source last_octet_file
-
-WG=$(which wg)
-if [ ! -f "$WG" ]; then
-	printf "ERROR: The wireguard not installed.\n"
-	printf "FIX: Please install wireguard using apt(apt install wireguard)\n"
-	printf "FIX: If you use Ubuntu ≤ 19.04 first add wireguard ppa\n"
-	printf "FIX: add-apt-repository ppa:wireguard/wireguard\n"
-	exit 1
-fi
 
 mkdir $client_name
 
