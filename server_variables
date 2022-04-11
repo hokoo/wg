@@ -1,8 +1,8 @@
 ###Change this for your interface name and network###
 
-wg_interface="INTERFACE_NAME_HERE"
-wg_network="NN.NN.NN"
+wg_interface="wg_all"
+wg_network="10.20.01"
 
-server_ip=$(curl -4 -s https://ifconfig.co)
-internal_interface=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
-server_port=NNNN #Change here!!!
+server_ip=$(curl -4 -s https://ip.lindon.pw)
+internal_interface=$(ip route get 8.8.8.8 | awk -- '{printf $5}')
+server_port=1194 #Change here!!!
