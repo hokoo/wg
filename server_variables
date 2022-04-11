@@ -1,7 +1,8 @@
 ###Change this for your interface name and network###
-wg_interface="INTERFACE NAME HERE"
+
+wg_interface="INTERFACE_NAME_HERE"
 wg_network="NN.NN.NN"
 
 server_ip=$(curl -4 -s https://ifconfig.co)
-internal_interface=$(ip r s|grep $server_ip|awk '{print $3}')
+internal_interface=$(ip route | grep default | sed -e "s/^.*dev.//" -e "s/.proto.*//")
 server_port=NNNN #Change here!!!

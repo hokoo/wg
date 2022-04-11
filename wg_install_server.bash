@@ -5,7 +5,7 @@ apt-get update
 apt-get -y install wireguard curl
 
 if [ -z "$1" ]; then
-	echo "No user name"
+	echo "No wg name"
 	exit 1
 fi
 
