@@ -1,0 +1,8 @@
+###Change this for your interface name and network###
+
+wg_interface="wg_all"
+wg_network="10.20.01"
+
+server_ip=$(curl -4 -s https://ip.lindon.pw)
+internal_interface=$(ip route get 8.8.8.8 | awk -- '{printf $5}')
+server_port=1194 #Change here!!!
