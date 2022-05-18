@@ -2,6 +2,9 @@
 
 # add-apt-repository -y ppa:wireguard/wireguard
 apt-get update
+apt-get -y install python3-pip
+pip3 install telegram-send
+
 apt-get -y install wireguard curl
 
 if [ -z "$1" ]; then
