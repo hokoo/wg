@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
 # add-apt-repository -y ppa:wireguard/wireguard
-apt-get update
-apt-get -y install python3-pip
-pip3 install telegram-send
-
-apt-get -y install wireguard curl
 
 if [ -z "$1" ]; then
 	echo "No wg name"
@@ -28,6 +23,11 @@ if [ ! -f last_octet_file ]; then
 	echo "No last_octet_file!"
 	exit 1
 fi
+
+apt-get update
+apt-get -y install wireguard curl
+apt-get -y install python3-pip
+pip3 install telegram-send
 
 source server_variables
 source last_octet_file
