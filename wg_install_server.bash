@@ -28,6 +28,7 @@ apt-get update
 apt-get -y install wireguard curl
 apt-get -y install python3-pip
 pip3 install telegram-send
+apt install qrencode
 
 source server_variables
 source last_octet_file
