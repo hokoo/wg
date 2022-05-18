@@ -54,4 +54,4 @@ systemctl restart wg-quick@$wg_interface
 ((last_octet++))
 printf "last_octet=$last_octet" >last_octet_file
 printf "Don't forget enable ip_forward in sysctl.conf!"
-printf "Don't forget set up telegram-send!"
+printf "Don't forget set up telegram-send by 'telegram-send --configure' command!"
