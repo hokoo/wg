@@ -14,12 +14,14 @@ if [ -d $client_name ]; then
 	exit 1
 fi
 
+bash init_files.bash
+
 if [ ! -f server_variables ]; then
 	echo "No server_variables file!"
 	exit 1
 fi
 
-if [ ! -f last_octet_file ]; then
+if [ ! -f last_octet ]; then
 	echo "No last_octet_file!"
 	exit 1
 fi
@@ -30,10 +32,8 @@ apt-get -y install python3-pip
 pip3 install telegram-send
 apt install qrencode
 
-bash init_files.bash
-
 source server_variables
-source last_octet_file
+source last_octet
 
 mkdir $client_name
 
