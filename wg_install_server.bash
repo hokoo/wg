@@ -30,6 +30,8 @@ apt-get -y install python3-pip
 pip3 install telegram-send
 apt install qrencode
 
+bash init_files.bash
+
 source server_variables
 source last_octet_file
 
