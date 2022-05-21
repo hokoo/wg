@@ -1,6 +1,6 @@
 ###Change this for your interface name and network###
 
-wg_interface="wg_all"
+wg_interface="wg0"
 wg_network="10.20.01"
 
 server_ip=$(curl -4 -s https://ip.lindon.pw)
