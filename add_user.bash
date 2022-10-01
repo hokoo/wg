@@ -72,7 +72,7 @@ endpoint="$server_ip:$server_port"
 
 printf "[Interface]\nPrivateKey = $privatekey\nAddress = $wg_network.$last_octet/24\nDNS = 1.1.1.1, 8.8.8.8\n\n[Peer]\nPublicKey = $server_public\nPresharedKey = $preshared\nAllowedIPs = 0.0.0.0/0\nEndpoint = $endpoint\nPersistentKeepalive = 25" >$clients_folder/$client_name/wg.conf
 printf "###$client_name config###\n[Peer]\nPublicKey = $publickey\nPresharedKey = $preshared\nAllowedIPs = $wg_network.$last_octet/32\n###End $client_name config###\n" >$clients_folder/$client_name/for_server_config.conf
-cat $client_name/for_server_config.conf >>/etc/wireguard/$wg_interface.conf
+cat $clients_folder/$client_name/for_server_config.conf >>/etc/wireguard/$wg_interface.conf
 
 systemctl restart wg-quick@$wg_interface
 
@@ -80,7 +80,7 @@ systemctl restart wg-quick@$wg_interface
 printf "last_octet=$last_octet" >last_octet
 
 $QR -t ansiutf8 <$clients_folder/$client_name/wg.conf
-$QR -o $client_name/$client_name-qr.png <$clients_folder/$client_name/wg.conf
+$QR -o $clients_folder/$client_name/$client_name-qr.png <$clients_folder/$client_name/wg.conf
 
 printf "$client_name client config for $(hostname) server" | $TG_SEND --stdin
 $TG_SEND --image $clients_folder/$client_name/$client_name-qr.png --caption "Client config"
